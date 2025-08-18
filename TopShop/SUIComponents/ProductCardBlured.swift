@@ -14,34 +14,28 @@ struct ProductCardBlured: View {
     let description: String
     
     var body: some View {
-        VStack {
-            Image(image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .overlay(alignment: .bottom) {
-                    VStack {
-                        Image(image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(height: 100, alignment: .bottom)
-                            .blur(radius: 4)
-                            .clipped()
-                    }
-                }
-        }
-        .overlay {
-            cardInfo()
-        }
-        .cornerRadius(20)
-        .frame(width: 400)
-        .padding(.horizontal, 12)
-        
+        Image(image)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .overlay(alignment: .bottom) {
+                Image(image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 100, alignment: .bottom)
+                    .blur(radius: 4)
+                    .clipped()
+            }
+            .overlay {
+                cardInfo()
+            }
+            .cornerRadius(20)
+            .frame(width: 400)
+            .padding(.horizontal, 12)
     }
 }
 
-
 private extension ProductCardBlured {
-    func buuton() -> some View {
+    func button() -> some View {
         Button(action: {
             print("Buy button tapped")
         }) {
@@ -77,17 +71,16 @@ private extension ProductCardBlured {
                     .foregroundStyle(.white)
                     .frame(alignment: .leading)
             }
-            .padding(.bottom, 12)
             
             Text(description)
                 .font(.body)
                 .foregroundStyle(.white)
                 .frame(alignment: .leading)
             
-            buuton()
+            button()
         }
         .padding(.horizontal, 16)
-        .padding(.bottom, 12)
+        .padding(.bottom, 2)
     }
 }
 
